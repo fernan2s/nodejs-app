@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appnode-deployment
+  labels:
+     app: appnode
+     type: front-end
+spec:
+  template:
+     metadata:
+       name: appnodejs-pod
+       labels:
+         app: appnodejs
+         type: front-end
+     spec:
+         containers:
+           - name: nodedocker
+             image: "fernan2/nodesjs-app"
+  replicas: 1
+  selector:
+    matchLabels:
+      type: front-end
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: appnodejs
+  name: appnodejs-service
+spec:
+  ports:
+  - port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    run: appnodejs
+  type: ClusterIP
+
+
+
+
+
+
+
+
+
