@@ -1,7 +1,7 @@
 ARG ARCH=
-ARG IMAGE_BASE=16-alpine
+ARG IMAGE_BASE=16.3.0-alpine
 
-FROM ${ARCH}node:$IMAGE_BASE
+FROM ${ARCH}node:latest
 LABEL Name="Node.js Demo App" Version=4.8.5
 LABEL org.opencontainers.image.source = "https://github.com/benc-uk/nodejs-demoapp"
 ENV NODE_ENV production
