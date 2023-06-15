@@ -16,6 +16,7 @@ spec:
          containers:
            - name: nodedocker
              image: "fernan2/nodesjs-app"
+#             image: "ghcr.io/benc-uk/nodejs-demoapp"
   replicas: 1
   selector:
     matchLabels:
@@ -27,9 +28,10 @@ kind: Service
 metadata:
   name: appnodejs-service
 spec:
-  type: NodePort
-  ports:
-  - port: 3000
-    targetPort: 3000
   selector:
-    app: appnode
+    app: appnodejs
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      targetPort: 3000
+      port: 80

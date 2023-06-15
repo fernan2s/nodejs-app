@@ -1,0 +1,4 @@
+ignore:
+  - vulnerability: CVE-2022-25881
+  - vulnerability: CVE-2022-23539
+  - vulnerability: CVE-2022-25881
